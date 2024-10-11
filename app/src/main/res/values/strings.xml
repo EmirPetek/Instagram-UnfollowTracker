@@ -2,4 +2,10 @@
     <string name="app_name">Instagram UnfollowTracker</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title">Instagram UnfollowTracker</string>
+    <string name="make_analysis_title">Make Analysis</string>
+    <string name="select_following_json">Select following.json file</string>
+    <string name="select_follower_json">Select follower.json file</string>
+    <string name="follower_users">Follower Users</string>
+    <string name="following_users">Following Users</string>
 </resources>
