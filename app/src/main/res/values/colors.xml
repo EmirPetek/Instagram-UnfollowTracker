@@ -6,4 +6,5 @@
     <color name="text_white">#FFFFFFFF</color>
     <color name="gradient_start">#4A00E0</color>
     <color name="gradient_end">#8E2DE2</color>
+    <color name="light_blue">#1E88E5</color>
 </resources>

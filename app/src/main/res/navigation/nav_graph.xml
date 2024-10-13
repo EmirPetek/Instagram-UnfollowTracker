@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_makeAnalysisFragment"
+            app:destination="@id/makeAnalysisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/makeAnalysisFragment"
+        android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.makeAnalysis.MakeAnalysisFragment"
+        android:label="fragment_make_analysis"
+        tools:layout="@layout/fragment_make_analysis" />
 </navigation>

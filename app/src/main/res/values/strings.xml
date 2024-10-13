@@ -8,4 +8,6 @@
     <string name="select_follower_json">Select follower.json file</string>
     <string name="follower_users">Follower Users</string>
     <string name="following_users">Following Users</string>
+    <string name="minutes_ago"> minutes ago</string>
+    <string name="hours_ago"> hours ago</string>
 </resources>

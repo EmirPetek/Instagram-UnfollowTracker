@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.emirpetek.instagramunfollowtracker.R
 import com.emirpetek.instagramunfollowtracker.data.DataItem
 import com.emirpetek.instagramunfollowtracker.data.RelationshipsFollowingResponse
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentHomeBinding
@@ -45,6 +47,8 @@ class HomeFragment : Fragment() {
 
         sharedPreferences = requireContext().getSharedPreferences("selected_list", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
+
+        binding.imageViewHomeMakeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_makeAnalysisFragment) }
 
         binding.button.setOnClickListener { openFilePicker(requestFileCodeFollowing) }
         binding.button2.setOnClickListener { openFilePicker(requestFileCodeFollowers) }

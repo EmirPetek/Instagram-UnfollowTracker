@@ -72,7 +72,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageViewHomeMakeAnalysis"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="8dp"
