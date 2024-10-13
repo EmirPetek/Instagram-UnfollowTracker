@@ -11,16 +11,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.emirpetek.instagramunfollowtracker.R
 import com.emirpetek.instagramunfollowtracker.data.DataItem
 import com.emirpetek.instagramunfollowtracker.data.RelationshipsFollowingResponse
+import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowerData
+import com.emirpetek.instagramunfollowtracker.data.roomData.FollowingData
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentMakeAnalysisBinding
 import com.emirpetek.instagramunfollowtracker.ui.fragment.home.HomeFragment
+import com.emirpetek.instagramunfollowtracker.util.RandomKey
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class MakeAnalysisFragment : Fragment() {
 
@@ -46,6 +54,25 @@ class MakeAnalysisFragment : Fragment() {
         binding.imageViewSelectFollowingFile.setOnClickListener { openFilePicker(requestFileCodeFollowing) }
         binding.imageViewSelectFollowerFile.setOnClickListener { openFilePicker(requestFileCodeFollowers) }
 
+        binding.buttonMakeAnalysis.setOnClickListener {
+
+            val randomKey = RandomKey().generateRandomKey()
+            val followerData = FollowerData(0,System.currentTimeMillis(), followerDataItemList!!,randomKey)
+            val followingData = FollowingData(0,System.currentTimeMillis(), followingDataItemList!!.relationships_following,randomKey)
+
+            viewModel.insertFollower(followerData,requireContext())
+            viewModel.insertFollowing(followingData,requireContext())
+            val filteredData = filterFollowingOnly(followingData.followers,followerData.followers)
+            val analysedData = AnalysisData(0,System.currentTimeMillis(),filteredData,randomKey)
+
+            CoroutineScope(Dispatchers.Main).launch {
+                viewModel.insertAnalysedData(analysedData,requireContext())
+            }
+
+
+            Log.e("follower: ", followerDataItemList.toString())
+            Log.e("following: ", followingDataItemList.toString())
+        }
 
         return binding.root
     }
@@ -93,9 +120,10 @@ class MakeAnalysisFragment : Fragment() {
                 jsonString?.let {
                     // JSON'u DataItem listesine dönüştür
                     followerDataItemList = parseJsonToDataItemList(it)!!
-                    val dataDb = FollowerData(0,System.currentTimeMillis(), followerDataItemList!!)
-                    viewModel.insert(dataDb,requireContext())
-                    Log.e("data size: ", followerDataItemList!!.toString())
+                    Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowerSelectedState)
+                    //val dataDb = FollowerData(0,System.currentTimeMillis(), followerDataItemList!!)
+                    //viewModel.insert(dataDb,requireContext())
+                    //Log.e("data size: ", followerDataItemList!!.toString())
 
                 }
             }
@@ -112,8 +140,9 @@ class MakeAnalysisFragment : Fragment() {
                 jsonString?.let {
                     // JSON'u DataItem listesine dönüştür
                     followingDataItemList = parseJsonToRelationshipsFollowingResponse(it)!!
+                    Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowingSelectedState)
 
-                    Log.e("data size: ", HomeFragment.followingDataItemList!!.toString())
+                    //Log.e("data size: ", HomeFragment.followingDataItemList!!.toString())
 
                 }
             }

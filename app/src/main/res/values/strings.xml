@@ -10,4 +10,7 @@
     <string name="following_users">Following Users</string>
     <string name="minutes_ago"> minutes ago</string>
     <string name="hours_ago"> hours ago</string>
+    <string name="check_selected_follower">Follower Selected State</string>
+    <string name="check_selected_following">Following Selected State</string>
+    <string name="make_analysis_text">MAKE ANALYSIS</string>
 </resources>

@@ -5,8 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.emirpetek.instagramunfollowtracker.data.DataItem
 
-@Entity(tableName = "followers")
-class FollowerData(
+
+@Entity(tableName = "followings")
+class FollowingData (
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -22,7 +23,4 @@ class FollowerData(
     @ColumnInfo(name = "saveKey")
     var saveKey: String
 
-
-
-) {
-}
+){}

@@ -5,26 +5,24 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.emirpetek.instagramunfollowtracker.data.roomData.FollowerData
+import com.emirpetek.instagramunfollowtracker.data.roomData.FollowingData
 
-@Database(entities = [FollowerData::class], version = 1)
+@Database(entities = [FollowingData::class], version = 1)
 @TypeConverters(Converters::class)
+abstract class FollowingDB: RoomDatabase() {
 
-abstract class FollowersDB : RoomDatabase(){
-
-    abstract fun followersDao(): FollowersDao
+    abstract fun followingDao(): FollowingDao
 
     companion object{
+        private var instance : FollowingDB? = null
 
-        private var instance : FollowersDB? = null
-
-        fun getDB(context: Context): FollowersDB? {
+        fun getDB(context: Context): FollowingDB? {
             if (instance == null){
-                synchronized(FollowersDB::class.java){
+                synchronized(FollowingDB::class.java){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        FollowersDB::class.java,
-                        "followers.db"
+                        FollowingDB::class.java,
+                        "following.db"
                     ).allowMainThreadQueries().build()
                 }
 
@@ -33,7 +31,5 @@ abstract class FollowersDB : RoomDatabase(){
 
         }
 
-
     }
-
 }

@@ -10,40 +10,37 @@ import java.util.TimeZone
 class CalculateTime    (val mContext: Context
 ) {
     fun unixtsToDate(timestamp: String): String {
-        // post zamanını gösterme kodu
-        val unixTimestamp = timestamp
-        val formattedDateTime = getLocalizedDateTime(unixTimestamp)
-        var postTime = formattedDateTime.substring(11, 16)
-        var yyyy = formattedDateTime.substring(0, 4)
-        var mm = formattedDateTime.substring(5, 7)
-        var dd = formattedDateTime.substring(8, 10)
-        var postDate = "$dd/$mm/$yyyy"
+        // Unix zaman damgası saniye cinsinden geliyor, bu yüzden milisaniyeye çevirmiyoruz
+        val unixTimestamp = timestamp.toLong() // Unix zaman damgası saniye cinsinde
+        val formattedDateTime = getLocalizedDateTime(unixTimestamp * 1000) // Tarih ve saat için milisaniyeye çevriliyor
+        val postTime = formattedDateTime.substring(11, 16)
+        val yyyy = formattedDateTime.substring(0, 4)
+        val mm = formattedDateTime.substring(5, 7)
+        val dd = formattedDateTime.substring(8, 10)
+        val postDate = "$dd/$mm/$yyyy"
 
-        val nowTimeStamp = System.currentTimeMillis().toString()
+        val nowTimeStamp = System.currentTimeMillis() / 1000 // Şu anki zaman saniye cinsine çevrildi
 
-        val timeDifference = (nowTimeStamp.substring(0, nowTimeStamp.length - 3)
-            .toLong() - unixTimestamp.substring(0, unixTimestamp.length - 3).toLong())
-        // timedifference saniye cinsinden gelir
+        val timeDifference = nowTimeStamp - unixTimestamp // Saniye farkı
 
-        val min = timeDifference / 60 // üstünden kaç dakika geçmiş onu gösterir
-        val hour = timeDifference / 3600 // üstünden kaç saat geçmiş onu gösterir
-        //Log.e("times: ", "min: $min hour: $hour")
-        var text: String = String()
-        if (min >= 0 && min < 60) {
+        val min = timeDifference / 60 // kaç dakika geçmiş
+        val hour = timeDifference / 3600 // kaç saat geçmiş
+
+        var text = ""
+        if (min in 0..59) {
             text = "$min ${mContext.getString(R.string.minutes_ago)}"
-
-        } else if (hour >= 1 && hour < 24) {
+        } else if (hour in 1..23) {
             text = "$hour ${mContext.getString(R.string.hours_ago)}"
         } else {
-            text = postTime + " - " + postDate
+            text = "$postTime - $postDate"
         }
 
         return text
     }
 
-    private fun getLocalizedDateTime(unixTime: String): String {
+    private fun getLocalizedDateTime(unixTime: Long): String {
         // Unix zamanını milisaniye cinsine çevir
-        val date = Date(unixTime.toLong() * 1)
+        val date = Date(unixTime)
 
         // Cihazın mevcut dil ve bölge ayarlarını al
         val locale = Locale.getDefault()
@@ -58,4 +55,5 @@ class CalculateTime    (val mContext: Context
         // Tarih ve saati formatla ve döndür
         return dateFormat.format(date)
     }
+
 }
