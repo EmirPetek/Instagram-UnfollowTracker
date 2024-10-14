@@ -50,17 +50,6 @@ class HomeFragment : Fragment() {
 
         binding.imageViewHomeMakeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_makeAnalysisFragment) }
 
-        binding.button.setOnClickListener { openFilePicker(requestFileCodeFollowing) }
-        binding.button2.setOnClickListener { openFilePicker(requestFileCodeFollowers) }
-        binding.button3.setOnClickListener {
-            Log.e("sizeler: ", "follower: ${followerDataItemList?.size}  following: ${followingDataItemList?.relationships_following?.size}")
-            val followerFilter = followerDataItemList!!
-            val followingFilter = followingDataItemList!!.relationships_following
-
-
-            val result = filterFollowingOnly(followingFilter,followerFilter)
-            Log.e("result: ", result.toString())
-        }
 
 
         // Inflate the layout for this fragment

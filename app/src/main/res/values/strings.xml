@@ -13,4 +13,5 @@
     <string name="check_selected_follower">Follower Selected State</string>
     <string name="check_selected_following">Following Selected State</string>
     <string name="make_analysis_text">MAKE ANALYSIS</string>
+    <string name="see_analysis">SEE ANALYSIS</string>
 </resources>
