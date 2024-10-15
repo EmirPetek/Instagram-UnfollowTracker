@@ -13,10 +13,27 @@
         <action
             android:id="@+id/action_homeFragment_to_makeAnalysisFragment"
             app:destination="@id/makeAnalysisFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_seeAnalysisFragment"
+            app:destination="@id/seeAnalysisFragment" />
     </fragment>
     <fragment
         android:id="@+id/makeAnalysisFragment"
         android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.makeAnalysis.MakeAnalysisFragment"
         android:label="fragment_make_analysis"
         tools:layout="@layout/fragment_make_analysis" />
+    <fragment
+        android:id="@+id/seeAnalysisFragment"
+        android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.SeeAnalysisListFragment"
+        android:label="fragment_see_analysis"
+        tools:layout="@layout/fragment_see_analysis_list" >
+        <action
+            android:id="@+id/action_seeAnalysisListFragment_to_seeAnalysisFragment"
+            app:destination="@id/seeAnalysisFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/seeAnalysisFragment2"
+        android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.SeeAnalysisFragment"
+        android:label="fragment_see_analysis"
+        tools:layout="@layout/fragment_see_analysis" />
 </navigation>

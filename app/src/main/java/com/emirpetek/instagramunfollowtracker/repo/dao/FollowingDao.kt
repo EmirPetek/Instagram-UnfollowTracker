@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.repo
+package com.emirpetek.instagramunfollowtracker.repo.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

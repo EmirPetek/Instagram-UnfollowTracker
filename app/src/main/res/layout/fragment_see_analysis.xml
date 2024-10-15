@@ -5,10 +5,33 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_drawable"
     android:orientation="vertical"
-    tools:context=".ui.fragment.SeeAnalysisFragment">
+    tools:context=".ui.fragment.seeAnalysis.SeeAnalysisFragment" >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCardSeeAnalysis"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutSeeAnalysis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unf_users" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/follower_users" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/following_users" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2SeeAnalysis"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

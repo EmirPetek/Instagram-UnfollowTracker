@@ -19,7 +19,10 @@ import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowerData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowingData
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentMakeAnalysisBinding
-import com.emirpetek.instagramunfollowtracker.ui.fragment.home.HomeFragment
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.FollowersFragment
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.FollowingFragment
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.TabLayoutStateAdapter
+import com.emirpetek.instagramunfollowtracker.ui.viewmodel.MakeAnalysisViewModel
 import com.emirpetek.instagramunfollowtracker.util.RandomKey
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
@@ -27,7 +30,6 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class MakeAnalysisFragment : Fragment() {

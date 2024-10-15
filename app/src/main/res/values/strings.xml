@@ -8,10 +8,16 @@
     <string name="select_follower_json">Select follower.json file</string>
     <string name="follower_users">Follower Users</string>
     <string name="following_users">Following Users</string>
+    <string name="unf_users">Unfollow Users</string>
     <string name="minutes_ago"> minutes ago</string>
     <string name="hours_ago"> hours ago</string>
     <string name="check_selected_follower">Follower Selected State</string>
     <string name="check_selected_following">Following Selected State</string>
     <string name="make_analysis_text">MAKE ANALYSIS</string>
     <string name="see_analysis">SEE ANALYSIS</string>
+    <string name="how_to_use">HOW TO USE?</string>
+    <string name="make_analysis">MAKE ANALYSIS</string>
+    <string name="unf_users_title_text">These are people you follow but who do not follow you back.</string>
+    <string name="follower_users_text">These are people follow you.</string>
+    <string name="following_users_text">These are people you follow.</string>
 </resources>

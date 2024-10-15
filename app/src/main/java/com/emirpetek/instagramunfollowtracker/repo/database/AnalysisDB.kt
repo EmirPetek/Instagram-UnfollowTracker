@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.repo
+package com.emirpetek.instagramunfollowtracker.repo.database
 
 import android.content.Context
 import androidx.room.Database
@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
+import com.emirpetek.instagramunfollowtracker.repo.Converters
+import com.emirpetek.instagramunfollowtracker.repo.dao.AnalysisDao
 
 @Database(entities = [AnalysisData::class], version = 1)
 @TypeConverters(Converters::class)

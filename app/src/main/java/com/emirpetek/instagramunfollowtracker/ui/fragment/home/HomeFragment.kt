@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         editor = sharedPreferences.edit()
 
         binding.imageViewHomeMakeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_makeAnalysisFragment) }
-
+        binding.imageViewHomeSeeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_seeAnalysisFragment) }
 
 
         // Inflate the layout for this fragment

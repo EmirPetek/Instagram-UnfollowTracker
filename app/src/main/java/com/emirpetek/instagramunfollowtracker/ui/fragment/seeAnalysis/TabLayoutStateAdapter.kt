@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.makeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

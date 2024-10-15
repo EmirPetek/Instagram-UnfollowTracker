@@ -1,16 +1,14 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.makeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.viewmodel
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.emirpetek.instagramunfollowtracker.data.DataItem
 import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowerData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowingData
-import com.emirpetek.instagramunfollowtracker.repo.AnalysisDB
-import com.emirpetek.instagramunfollowtracker.repo.FollowersDB
-import com.emirpetek.instagramunfollowtracker.repo.FollowingDB
+import com.emirpetek.instagramunfollowtracker.repo.database.AnalysisDB
+import com.emirpetek.instagramunfollowtracker.repo.database.FollowersDB
+import com.emirpetek.instagramunfollowtracker.repo.database.FollowingDB
 
 class MakeAnalysisViewModel : ViewModel() {
     private val followersRepo = FollowersDB

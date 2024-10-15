@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="Nasıl Kullanılır"
+                    android:text="@string/how_to_use"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="Analiz Yap"
+                    android:text="@string/make_analysis"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
