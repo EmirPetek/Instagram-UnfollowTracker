@@ -12,6 +12,6 @@ interface FollowersDao {
     @Insert
     fun insert(followers: FollowerData)
 
-    @Query("SELECT * FROM followers")
-    fun getAllFollowers(): List<FollowerData>
+    @Query("SELECT * FROM followers where saveKey = :id")
+    fun getAllFollowers(id: String): List<FollowerData>
 }
