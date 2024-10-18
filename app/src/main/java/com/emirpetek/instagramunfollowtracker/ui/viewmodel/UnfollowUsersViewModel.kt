@@ -1,9 +1,8 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.emirpetek.instagramunfollowtracker.data.DataItem
 import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
 import com.emirpetek.instagramunfollowtracker.repo.database.AnalysisDB
 
@@ -17,8 +16,8 @@ class UnfollowUsersViewModel : ViewModel() {
         return data
     }
 
-    fun getUnfUsersDB(context: Context){
-        data.value = db.getDB(context)!!.analysisDao().getAllFollowing()
+    fun getUnfUsersDB(context: Context,saveKey:String){
+        data.value = db.getDB(context)!!.analysisDao().getUnfUsers(saveKey)
     }
 
 

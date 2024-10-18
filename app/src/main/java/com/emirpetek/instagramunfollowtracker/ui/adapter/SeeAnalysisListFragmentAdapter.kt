@@ -1,6 +1,7 @@
 package com.emirpetek.instagramunfollowtracker.ui.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,9 @@ class SeeAnalysisListFragmentAdapter(
         val item = list[position]
         holder.tvAnalysisTime.text = CalculateTime(context).unixtsToDate((item.timestamp/1000).toString())
         holder.layout.setOnClickListener { it ->
-            Navigation.findNavController(it).navigate(R.id.action_seeAnalysisListFragment_to_seeAnalysisFragment)
+            val saveKey = item.saveKey
+            val bundle = Bundle().apply { putString("saveKey",saveKey) }
+            Navigation.findNavController(it).navigate(R.id.action_seeAnalysisListFragment_to_seeAnalysisFragment,bundle)
         }
     }
 

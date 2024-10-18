@@ -19,9 +19,9 @@ import com.emirpetek.instagramunfollowtracker.data.roomData.AnalysisData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowerData
 import com.emirpetek.instagramunfollowtracker.data.roomData.FollowingData
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentMakeAnalysisBinding
-import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.FollowersFragment
-import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.FollowingFragment
-import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.TabLayoutStateAdapter
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments.FollowersFragment
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments.FollowingFragment
+import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments.ViewPager2Adapter
 import com.emirpetek.instagramunfollowtracker.ui.viewmodel.MakeAnalysisViewModel
 import com.emirpetek.instagramunfollowtracker.util.RandomKey
 import com.google.android.material.tabs.TabLayoutMediator
@@ -37,7 +37,7 @@ class MakeAnalysisFragment : Fragment() {
 
     private val viewModel: MakeAnalysisViewModel by viewModels()
     private lateinit var binding: FragmentMakeAnalysisBinding
-    private lateinit var adapter : TabLayoutStateAdapter
+    private lateinit var adapter : ViewPager2Adapter
     val requestFileCodeFollowing = 1
     val requestFileCodeFollowers = 2
     companion object {
@@ -51,7 +51,7 @@ class MakeAnalysisFragment : Fragment() {
     ): View {
         binding = FragmentMakeAnalysisBinding.inflate(inflater,container,false)
 
-        initViewPagerAdapter()
+        //initViewPagerAdapter()
         binding.imageViewMakeAnalysisBackButton.setOnClickListener { findNavController().popBackStack() }
         binding.imageViewSelectFollowingFile.setOnClickListener { openFilePicker(requestFileCodeFollowing) }
         binding.imageViewSelectFollowerFile.setOnClickListener { openFilePicker(requestFileCodeFollowers) }
@@ -81,7 +81,7 @@ class MakeAnalysisFragment : Fragment() {
 
     private fun initViewPagerAdapter(){
 
-        val fragmentList = arrayListOf(
+      /*  val fragmentList = arrayListOf(
             FollowersFragment(), FollowingFragment()
         )
 
@@ -89,14 +89,14 @@ class MakeAnalysisFragment : Fragment() {
 
         // Adapter init
         val viewPager = binding.makeAnalysisViewPager2
-        adapter = TabLayoutStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle,fragmentList)
+        adapter = ViewPager2Adapter(childFragmentManager, viewLifecycleOwner.lifecycle,fragmentList)
         viewPager.adapter = adapter
 
         // TabLayout ile ViewPager bağlantısı yapılır.
         TabLayoutMediator(binding.tabLayoutMakeAnalysis, viewPager) { tab, position ->
             // TabLayout içerisindeki TabItem'lara text atanma işlemi yapılır.
             tab.text = tabTitles[position]
-        }.attach()
+        }.attach()*/
     }
 
 

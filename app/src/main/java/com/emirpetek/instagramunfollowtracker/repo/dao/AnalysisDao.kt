@@ -14,4 +14,7 @@ interface AnalysisDao {
     @Query("Select * from analysedData")
     fun getAllFollowing(): List<AnalysisData>
 
+    @Query("SELECT * FROM analysedData where saveKey = :id")
+    fun getUnfUsers(id:String): List<AnalysisData>
+
 }

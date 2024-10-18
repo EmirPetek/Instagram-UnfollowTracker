@@ -16,9 +16,14 @@ class MakeAnalysisViewModel : ViewModel() {
     private val analysisRepo = AnalysisDB
 
     private var followers : MutableLiveData<List<FollowerData>> = MutableLiveData()
+    private var followings : MutableLiveData<List<FollowingData>> = MutableLiveData()
 
     fun getFollowersList(): MutableLiveData<List<FollowerData>>{
         return followers
+    }
+
+    fun getFollowingsList(): MutableLiveData<List<FollowingData>> {
+        return followings
     }
 
 
@@ -34,8 +39,12 @@ class MakeAnalysisViewModel : ViewModel() {
         analysisRepo.getDB(context)!!.analysisDao().insert(data)
     }
 
-    fun getFollowers(context: Context) {
-        followers.value = followersRepo.getDB(context)!!.followersDao().getAllFollowers()
+    fun getFollowers(context: Context, saveKey:String) {
+        followers.value = followersRepo.getDB(context)!!.followersDao().getAllFollowers(saveKey)
+    }
+
+    fun getFollowings(context: Context, saveKey:String) {
+        followings.value = followingRepo.getDB(context)!!.followingDao().getAllFollowing(saveKey)
     }
 
 }

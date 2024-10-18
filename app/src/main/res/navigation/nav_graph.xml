@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/seeAnalysisFragment2"
-        android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.SeeAnalysisFragment"
+        android:name="com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.SeeAnalysisFragment"
         android:label="fragment_see_analysis"
         tools:layout="@layout/fragment_see_analysis" />
 </navigation>

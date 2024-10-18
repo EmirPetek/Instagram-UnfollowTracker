@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_drawable"
     android:orientation="vertical"
-    tools:context=".ui.fragment.seeAnalysis.SeeAnalysisFragment" >
+    tools:context=".ui.fragment.seeAnalysis.analysis.SeeAnalysisFragment" >
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutSeeAnalysis"

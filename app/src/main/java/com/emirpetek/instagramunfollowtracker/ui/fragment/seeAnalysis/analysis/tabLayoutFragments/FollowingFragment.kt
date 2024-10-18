@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,36 +8,36 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.emirpetek.instagramunfollowtracker.databinding.FragmentFollowersBinding
+import com.emirpetek.instagramunfollowtracker.databinding.FragmentFollowingBinding
 import com.emirpetek.instagramunfollowtracker.ui.adapter.FollowersFragmentAdapter
 import com.emirpetek.instagramunfollowtracker.ui.viewmodel.MakeAnalysisViewModel
 
-class FollowersFragment : Fragment() {
+
+class FollowingFragment(val saveKey: String) : Fragment() {
 
 
-    private lateinit var binding: FragmentFollowersBinding
+    private lateinit var binding: FragmentFollowingBinding
     private lateinit var adapter: FollowersFragmentAdapter
     private val viewModel: MakeAnalysisViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFollowersBinding.inflate(inflater, container, false)
+        binding = FragmentFollowingBinding.inflate(inflater,container,false)
 
-        viewModel.getFollowers(requireContext())
+        viewModel.getFollowers(requireContext(),saveKey)
         viewModel.getFollowersList().observe(viewLifecycleOwner, Observer { list ->
             for (l in list){
-                binding.recyclerViewFollowers.setHasFixedSize(true)
+                binding.recyclerViewFollowingUsers.setHasFixedSize(true)
                 adapter = FollowersFragmentAdapter(requireContext(), l.followers)
-                binding.recyclerViewFollowers.layoutManager =
+                binding.recyclerViewFollowingUsers.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                binding.recyclerViewFollowers.adapter = adapter
+                binding.recyclerViewFollowingUsers.adapter = adapter
             }
 
         })
 
 
-        // Inflate the layout for this fragment
         return binding.root
     }
 

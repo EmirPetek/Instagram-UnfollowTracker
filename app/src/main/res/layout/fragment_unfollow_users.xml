@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
-    tools:context=".ui.fragment.seeAnalysis.UnfollowUsersFragment">
+    tools:context=".ui.fragment.seeAnalysis.analysis.tabLayoutFragments.UnfollowUsersFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 

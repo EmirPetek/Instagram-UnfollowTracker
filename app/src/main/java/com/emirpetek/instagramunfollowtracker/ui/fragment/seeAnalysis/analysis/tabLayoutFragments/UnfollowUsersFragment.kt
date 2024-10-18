@@ -1,4 +1,4 @@
-package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis
+package com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.emirpetek.instagramunfollowtracker.R
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentUnfollowUsersBinding
 import com.emirpetek.instagramunfollowtracker.ui.adapter.FollowersFragmentAdapter
+import com.emirpetek.instagramunfollowtracker.ui.viewmodel.UnfollowUsersViewModel
 
-class UnfollowUsersFragment : Fragment() {
+class UnfollowUsersFragment(val saveKey: String) : Fragment() {
 
 
     private val viewModel: UnfollowUsersViewModel by viewModels()
@@ -25,7 +25,7 @@ class UnfollowUsersFragment : Fragment() {
     ): View {
         binding = FragmentUnfollowUsersBinding.inflate(inflater,container,false)
 
-        viewModel.getUnfUsersDB(requireContext())
+        viewModel.getUnfUsersDB(requireContext(),saveKey)
         viewModel.getUnfUsers().observe(viewLifecycleOwner, Observer { list ->
             for (l in list){
                 binding.recyclerViewUnfUsers.setHasFixedSize(true)
