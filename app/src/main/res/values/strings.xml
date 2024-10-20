@@ -5,6 +5,7 @@
     <string name="home_title">Instagram UnfollowTracker</string>
     <string name="make_analysis_title">Make Analysis</string>
     <string name="see_analysis_title">See Analysis</string>
+    <string name="see_analysis_list_title">See Analysis List</string>
     <string name="select_following_json">Select following.json file</string>
     <string name="select_follower_json">Select follower.json file</string>
     <string name="follower_users">Follower Users</string>
