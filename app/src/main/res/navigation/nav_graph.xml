@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_makeAnalysisFragment"
-            app:destination="@id/makeAnalysisFragment" />
+            app:destination="@id/makeAnalysisFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_seeAnalysisFragment"
-            app:destination="@id/seeAnalysisFragment" />
+            app:destination="@id/seeAnalysisFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/makeAnalysisFragment"
@@ -29,7 +37,11 @@
         tools:layout="@layout/fragment_see_analysis_list" >
         <action
             android:id="@+id/action_seeAnalysisListFragment_to_seeAnalysisFragment"
-            app:destination="@id/seeAnalysisFragment2" />
+            app:destination="@id/seeAnalysisFragment2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/seeAnalysisFragment2"
