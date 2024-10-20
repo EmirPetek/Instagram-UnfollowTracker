@@ -50,9 +50,6 @@ class HomeFragment : Fragment() {
 
         binding.imageViewHomeMakeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_makeAnalysisFragment) }
         binding.imageViewHomeSeeAnalysis.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_seeAnalysisFragment) }
-
-
-        // Inflate the layout for this fragment
         return binding.root
     }
 

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.emirpetek.instagramunfollowtracker.R
 import com.emirpetek.instagramunfollowtracker.databinding.FragmentSeeAnalysisBinding
 import com.emirpetek.instagramunfollowtracker.ui.fragment.seeAnalysis.analysis.tabLayoutFragments.FollowersFragment
@@ -27,6 +28,7 @@ class SeeAnalysisFragment : Fragment() {
     ): View {
         binding = FragmentSeeAnalysisBinding.inflate(inflater,container,false)
 
+        binding.imageViewSeeAnalsisBack.setOnClickListener { findNavController().popBackStack() }
 
         initViewPagerAdapter()
 
