@@ -22,4 +22,6 @@
     <string name="unf_users_title_text">These are people you follow but who do not follow you back.</string>
     <string name="follower_users_text">These are people follow you.</string>
     <string name="following_users_text">These are people you follow.</string>
+    <string name="be_sure_right_file">Be sure that you select true file.</string>
+    <string name="visit_analysis_page">Analysis completed. You can visit analysis page.</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.emirpetek.instagramunfollowtracker.R
@@ -51,7 +52,6 @@ class MakeAnalysisFragment : Fragment() {
     ): View {
         binding = FragmentMakeAnalysisBinding.inflate(inflater,container,false)
 
-        //initViewPagerAdapter()
         binding.imageViewMakeAnalysisBackButton.setOnClickListener { findNavController().popBackStack() }
         binding.imageViewSelectFollowingFile.setOnClickListener { openFilePicker(requestFileCodeFollowing) }
         binding.imageViewSelectFollowerFile.setOnClickListener { openFilePicker(requestFileCodeFollowers) }
@@ -71,32 +71,11 @@ class MakeAnalysisFragment : Fragment() {
                 viewModel.insertAnalysedData(analysedData,requireContext())
             }
 
-
-            Log.e("follower: ", followerDataItemList.toString())
-            Log.e("following: ", followingDataItemList.toString())
+            Toast.makeText(requireContext(),getString(R.string.visit_analysis_page),Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
         }
 
         return binding.root
-    }
-
-    private fun initViewPagerAdapter(){
-
-      /*  val fragmentList = arrayListOf(
-            FollowersFragment(), FollowingFragment()
-        )
-
-        val tabTitles = arrayListOf(getString(R.string.follower_users),getString(R.string.following_users))
-
-        // Adapter init
-        val viewPager = binding.makeAnalysisViewPager2
-        adapter = ViewPager2Adapter(childFragmentManager, viewLifecycleOwner.lifecycle,fragmentList)
-        viewPager.adapter = adapter
-
-        // TabLayout ile ViewPager bağlantısı yapılır.
-        TabLayoutMediator(binding.tabLayoutMakeAnalysis, viewPager) { tab, position ->
-            // TabLayout içerisindeki TabItem'lara text atanma işlemi yapılır.
-            tab.text = tabTitles[position]
-        }.attach()*/
     }
 
 
@@ -114,39 +93,52 @@ class MakeAnalysisFragment : Fragment() {
 
         if (requestCode == requestFileCodeFollowers && resultCode == Activity.RESULT_OK) {
             data?.data?.also { uri ->
-                // Seçilen dosyanın URI'sini al
-                val jsonString = readTextFromUri(uri)
 
-                //Log.e("şkkdsjfjdsfş",jsonString.toString())
+                try {
+                    // Seçilen dosyanın URI'sini al
+                    val jsonString = readTextFromUri(uri)
 
-                jsonString?.let {
-                    // JSON'u DataItem listesine dönüştür
-                    followerDataItemList = parseJsonToDataItemList(it)!!
-                    Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowerSelectedState)
-                    //val dataDb = FollowerData(0,System.currentTimeMillis(), followerDataItemList!!)
-                    //viewModel.insert(dataDb,requireContext())
-                    //Log.e("data size: ", followerDataItemList!!.toString())
+                    //Log.e("şkkdsjfjdsfş",jsonString.toString())
 
+                    jsonString?.let {
+                        // JSON'u DataItem listesine dönüştür
+                        followerDataItemList = parseJsonToDataItemList(it)!!
+                        Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowerSelectedState)
+                        //val dataDb = FollowerData(0,System.currentTimeMillis(), followerDataItemList!!)
+                        //viewModel.insert(dataDb,requireContext())
+                        //Log.e("data size: ", followerDataItemList!!.toString())
+
+                    }
+                }catch (e : Exception){
+                    Toast.makeText(requireContext(),getString(R.string.be_sure_right_file),Toast.LENGTH_SHORT).show()
                 }
+
             }
         }
 
         if (requestCode == requestFileCodeFollowing && resultCode == Activity.RESULT_OK) {
             data?.data?.also { uri ->
-                // Seçilen dosyanın URI'sini al
-                val jsonString = readTextFromUri(uri)
 
-                //Log.e("şkkdsjfjdsfş",jsonString.toString())
+                try {
+                    // Seçilen dosyanın URI'sini al
+                    val jsonString = readTextFromUri(uri)
+
+                    //Log.e("şkkdsjfjdsfş",jsonString.toString())
 
 
-                jsonString?.let {
-                    // JSON'u DataItem listesine dönüştür
-                    followingDataItemList = parseJsonToRelationshipsFollowingResponse(it)!!
-                    Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowingSelectedState)
+                    jsonString?.let {
+                        // JSON'u DataItem listesine dönüştür
+                        followingDataItemList = parseJsonToRelationshipsFollowingResponse(it)!!
+                        Glide.with(this).load(R.drawable.positive).into(binding.imageViewFollowingSelectedState)
 
-                    //Log.e("data size: ", HomeFragment.followingDataItemList!!.toString())
+                        //Log.e("data size: ", HomeFragment.followingDataItemList!!.toString())
 
+                    }
+                }catch (e : Exception){
+                    Toast.makeText(requireContext(),getString(R.string.be_sure_right_file),Toast.LENGTH_SHORT).show()
                 }
+
+
             }
         }
     }
